@@ -25,15 +25,24 @@ class House:
         return self.number_of_floors != other.number_of_floors
 
     def __add__(self, value):
-        self.number_of_floors = value + 10
+        if isinstance(value, int):
+            self.number_of_floors = value + 10
+        elif isinstance(value, House):
+            value.number_of_floors
         return self
 
     def __radd__(self, value):
-        self.number_of_floors = 10 + self.number_of_floors
+        if isinstance(value, int):
+            self.number_of_floors = 10 + self.number_of_floors
+        elif isinstance(value, House):
+            value.number_of_floors
         return self
 
     def __iadd__(self, value):
-        self.number_of_floors += 10
+        if isinstance(value, int):
+            self.number_of_floors += 10
+        elif isinstance(value, House):
+            value.number_of_floors
         return self
 
 
